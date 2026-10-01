@@ -118,7 +118,7 @@ EXECUTE TASK COSTS_DB.REPORTING.COST_REPORT_TASK;
 
 ## Sample Report
 
-See `samples/lansdowne_costs_report_sample.xlsx` for an example of the generated output.
+See `samples/costs_report_sample.xlsx` for an example of the generated output.
 
 ## Project Structure
 
@@ -133,5 +133,5 @@ costs/
 │   ├── 04_procedure.sql             -- Python stored procedure
 │   └── 05_task.sql                  -- Scheduled task
 └── samples/
-    └── lansdowne_costs_report_sample.xlsx
+    └── costs_report_sample.xlsx
 ```

@@ -134,13 +134,13 @@ def main(session):
 
     now = datetime.now()
     report_date = now.strftime("%d %b %Y @%H:%M")
-    excel_title = "Lansdowne Partners Costs Report - " + report_date
+    excel_title = "Snowflake Costs Report - " + report_date
     hour = now.hour
     if hour == 0: time_str = "12am"
     elif hour < 12: time_str = str(hour) + "am"
     elif hour == 12: time_str = "12pm"
     else: time_str = str(hour - 12) + "pm"
-    email_title = "Lansdowne Partners Costs Report " + now.strftime("%d-%b-%Y") + " Time = " + time_str
+    email_title = "Snowflake Costs Report " + now.strftime("%d-%b-%Y") + " Time = " + time_str
 
     ws.merge_cells("A1:D1")
     ws["A1"] = excel_title
@@ -195,7 +195,7 @@ def main(session):
 
     buf = io.BytesIO(); wb.save(buf); buf.seek(0)
     ts = now.strftime("%Y%m%d_%H%M%S")
-    fname = "lansdowne_costs_report_" + ts + ".xlsx"
+    fname = "costs_report_" + ts + ".xlsx"
     session.file.put_stream(buf, "@COSTS_DB.REPORTING.REPORT_STAGE/" + fname, auto_compress=False, overwrite=True)
 
     url_r = session.sql("SELECT GET_PRESIGNED_URL(@COSTS_DB.REPORTING.REPORT_STAGE, '" + fname + "', 86400) AS URL").collect()
